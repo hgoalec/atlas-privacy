@@ -1,302 +1,560 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atlas — Le Voyage de la Sterne — Support & Privacy</title>
+  <title>Atlas — Le Voyage de la Sterne | Géographie ludique pour enfants</title>
+  <meta name="description" content="Atlas transforme la géographie en aventure. 173 pays, 7 modes de jeu, globe 3D interactif. Pour enfants dès 5 ans, avant même de savoir lire.">
   <style>
-    :root { color-scheme: light; }
+    :root {
+      --primary: #1a3a7a;
+      --primary-light: #4a90d9;
+      --accent: #f59e0b;
+      --bg: #f0f4fa;
+      --text: #1a2b5f;
+      color-scheme: light;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
-      background: #f0f4fa;
-      color: #1a2b5f;
-      line-height: 1.7;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* ── Header ── */
-    header {
-      background: linear-gradient(135deg, #0D1B3E 0%, #1a3a7a 100%);
+    /* ── Hero Section ── */
+    .hero {
+      background: linear-gradient(135deg, #0D1B3E 0%, var(--primary) 50%, var(--primary-light) 100%);
       color: white;
-      padding: 56px 24px 48px;
+      padding: 80px 24px 100px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .app-icon {
-      width: 96px; height: 96px;
-      border-radius: 22px;
-      margin: 0 auto 16px;
-      display: block;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    }
-    header h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; }
-    header p { margin-top: 6px; opacity: 0.7; font-size: 15px; }
 
-    /* ── Nav ── */
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      padding: 16px 24px;
-      background: white;
-      border-bottom: 1px solid #e0e8f5;
-      flex-wrap: wrap;
-      position: sticky;
+    .hero::before {
+      content: '';
+      position: absolute;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%);
+      pointer-events: none;
     }
-    nav a {
+
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .app-icon-hero {
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
+      margin: 0 auto 24px;
+      display: block;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .hero .subtitle {
+      font-size: clamp(18px, 3vw, 24px);
+      opacity: 0.95;
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+
+    .hero .tagline {
+      font-size: clamp(16px, 2.5vw, 20px);
+      opacity: 0.85;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 18px;
       text-decoration: none;
-      color: #1a3a7a;
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255,255,255,0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
       font-size: 14px;
       font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 20px;
-      border: 1.5px solid #c8d4f0;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    nav a:hover { background: #1a3a7a; color: white; border-color: #1a3a7a; }
-
-    /* ── Main ── */
-    main {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 40px 20px 80px;
-    }
-
-    /* ── Support section ── */
-    .support-card {
-      background: white;
-      border-radius: 20px;
-      padding: 40px;
-      margin-bottom: 32px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-      border: 1px solid #e0e8f5;
-    }
-
-    .support-card h2 {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .support-card p {
-      color: #3a4a6b;
-      font-size: 15px;
       margin-bottom: 16px;
     }
 
-    .contact-btn {
-      display: inline-block;
-      background: #1a3a7a;
-      color: white;
-      text-decoration: none;
-      padding: 12px 28px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 15px;
-      transition: background 0.2s;
+    /* ── Features Grid ── */
+    .features {
+      max-width: 1200px;
+      margin: -60px auto 80px;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
     }
-    .contact-btn:hover { background: #0d2456; }
 
-    .faq-item {
-      border-top: 1px solid #e8ecf5;
-      padding: 16px 0;
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
     }
-    .faq-item:first-child { border-top: none; padding-top: 8px; }
-    .faq-q { font-weight: 700; font-size: 15px; color: #1a2b5f; margin-bottom: 6px; }
-    .faq-a { font-size: 14px; color: #3a4a6b; }
 
-    /* ── Privacy section ── */
-    .privacy-card {
+    .feature-card {
       background: white;
       border-radius: 20px;
-      padding: 36px 40px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-      border: 1px solid #e0e8f5;
+      padding: 32px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+      border: 1px solid rgba(26, 58, 122, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .privacy-card h2 {
-      font-size: 19px;
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 50px rgba(0,0,0,0.12);
+    }
+
+    .feature-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 20px;
       font-weight: 700;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid #e8ecf5;
-      display: flex; align-items: center; gap: 8px;
-    }
-
-    .privacy-card h3 {
-      font-size: 14px;
-      font-weight: 700;
-      color: #1a3a7a;
-      margin: 18px 0 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .privacy-card p {
-      font-size: 14px;
-      color: #3a4a6b;
-      margin-bottom: 8px;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #e8f0ff;
-      color: #1a3a7a;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 20px;
       margin-bottom: 12px;
+      color: var(--primary);
     }
 
-    footer {
+    .feature-card p {
+      font-size: 15px;
+      color: #4a5a7b;
+      line-height: 1.7;
+    }
+
+    /* ── Screenshots ── */
+    .screenshots {
+      background: white;
+      padding: 80px 24px;
       text-align: center;
-      padding: 32px 20px;
-      font-size: 13px;
-      color: #8a9ab5;
+    }
+
+    .screenshots h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 48px;
+    }
+
+    .screenshot-carousel {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .screenshot-item {
+      max-width: 300px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 50px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+    }
+
+    .screenshot-item:hover {
+      transform: scale(1.05);
+    }
+
+    .screenshot-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── Game Modes ── */
+    .game-modes {
+      background: var(--bg);
+      padding: 80px 24px;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 64px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      font-size: 18px;
+      color: #4a5a7b;
+    }
+
+    .modes-list {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      gap: 20px;
+    }
+
+    .mode-item {
+      background: white;
+      border-radius: 16px;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: all 0.3s;
+    }
+
+    .mode-item:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      transform: translateX(4px);
+    }
+
+    .mode-emoji {
+      font-size: 40px;
+      flex-shrink: 0;
+    }
+
+    .mode-content h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .mode-content p {
+      font-size: 15px;
+      color: #4a5a7b;
+    }
+
+    /* ── Languages ── */
+    .languages {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .lang-flags {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 32px;
+      font-size: 64px;
+    }
+
+    /* ── CTA Final ── */
+    .cta-final {
+      background: white;
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .cta-final h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .cta-final p {
+      font-size: 18px;
+      color: #4a5a7b;
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #0D1B3E;
+      color: rgba(255,255,255,0.7);
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero { padding: 60px 20px 80px; }
+      .features { margin-top: -40px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .screenshot-carousel { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <img src="app-icon.png" alt="Atlas App Icon" class="app-icon">
-  <h1>Atlas — Le Voyage de la Sterne</h1>
-  <p>Geography quiz & 3D interactive globe</p>
-</header>
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🌍 Disponible sur iOS</div>
+    <img src="app-icon.png" alt="Atlas App Icon" class="app-icon-hero">
+    <h1>Atlas — Le Voyage de la Sterne</h1>
+    <p class="subtitle">Transforme la géographie en aventure</p>
+    <p class="tagline">173 pays à découvrir · 7 modes de jeu · Globe 3D interactif · Dès 5 ans</p>
 
-<nav>
-  <a href="#support">Support</a>
-  <a href="#faq">FAQ</a>
-  <a href="#privacy-fr">🇫🇷 Confidentialité</a>
-  <a href="#privacy-en">🇬🇧 Privacy</a>
-  <a href="#privacy-de">🇩🇪 Datenschutz</a>
-  <a href="#privacy-es">🇪🇸 Privacidad</a>
-</nav>
-
-<main>
-
-  <!-- Support -->
-  <div class="support-card" id="support">
-    <h2>🛟 Support</h2>
-    <p>Une question, un bug, ou une suggestion ? Envoie-nous un email et nous répondrons dans les 48h.</p>
-    <a class="contact-btn" href="mailto:atlas@hgoalec.dev">atlas@hgoalec.dev</a>
-  </div>
-
-  <!-- FAQ -->
-  <div class="support-card" id="faq">
-    <h2>FAQ</h2>
-
-    <div class="faq-item">
-      <div class="faq-q">Comment restaurer mes achats ?</div>
-      <div class="faq-a">Ouvre la Boutique dans l'app → "Restaurer les achats". Tes packs seront récupérés automatiquement avec ton compte Apple.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Mes données sont-elles sauvegardées ?</div>
-      <div class="faq-a">Ta progression est sauvegardée localement sur ton appareil. Elle peut être incluse dans les sauvegardes iCloud si tu les as activées dans les réglages iOS.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">L'app fonctionne-t-elle hors connexion ?</div>
-      <div class="faq-a">Oui, tous les quiz et le globe fonctionnent sans internet. Seul le classement mondial nécessite une connexion.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Comment supprimer un profil ?</div>
-      <div class="faq-a">Sur l'écran de sélection des profils, appuie longuement sur le profil à supprimer, puis confirme la suppression.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">How do I restore my purchases?</div>
-      <div class="faq-a">Open the Shop in the app and tap "Restore Purchases". Your packs will be recovered automatically using your Apple account.</div>
+    <div class="cta-buttons">
+      <a href="https://apps.apple.com/app/atlas" class="btn btn-primary">
+        <span>📲</span> Télécharger sur l'App Store
+      </a>
+      <a href="#features" class="btn btn-secondary">
+        En savoir plus
+      </a>
     </div>
   </div>
+</section>
 
-  <!-- Privacy FR -->
-  <div class="privacy-card" id="privacy-fr">
-    <span class="badge">Français</span>
-    <h2>🇫🇷 Politique de confidentialité</h2>
-    <h3>Données collectées</h3>
-    <p>Atlas ne collecte aucune donnée personnelle. Toutes les données de jeu (progression, profils, badges, scores) sont stockées uniquement sur votre appareil via SwiftData et ne sont jamais transmises à un serveur externe.</p>
-    <h3>Achats intégrés</h3>
-    <p>Les achats (packs Expéditions) sont traités exclusivement par Apple via StoreKit 2. Atlas n'a pas accès à vos informations de paiement.</p>
-    <h3>Classement mondial</h3>
-    <p>Le classement mondial utilise uniquement votre nom de profil et votre score. Aucune autre donnée personnelle n'est transmise.</p>
-    <h3>Analyses</h3>
-    <p>Atlas utilise les outils d'analyse d'App Store Connect fournis par Apple. Ces données sont anonymisées et agrégées par Apple. Aucun SDK analytique tiers n'est intégré.</p>
-    <h3>Enfants</h3>
-    <p>Atlas est conçu pour les enfants dès 5 ans. L'application ne collecte aucune donnée personnelle, ne propose aucune interaction sociale, et ne contient aucune publicité.</p>
-    <h3>Contact</h3>
-    <p>Questions : <a href="mailto:atlas@hgoalec.dev">atlas@hgoalec.dev</a></p>
+<!-- Features Grid -->
+<section class="features" id="features">
+  <div class="feature-grid">
+    <div class="feature-card">
+      <span class="feature-icon">🌍</span>
+      <h3>Globe 3D Interactif</h3>
+      <p>Fais tourner un globe du bout du doigt. Chaque pays maîtrisé brille en or.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="feature-icon">🎮</span>
+      <h3>7 Modes de Jeu</h3>
+      <p>Drapeaux, capitales, expert, dictée, défi du jour, chrono et révision intelligente.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="feature-icon">🎯</span>
+      <h3>Progression Motivante</h3>
+      <p>15 niveaux, 34 badges à débloquer. Le Gold Mastery System récompense ta maîtrise.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="feature-icon">🔊</span>
+      <h3>Dès 5 ans, Avant de Lire</h3>
+      <p>Voix activée par défaut. Mode Dictée sans lecture requise. 100% accessible.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="feature-icon">👥</span>
+      <h3>Multi-Profils</h3>
+      <p>Jusqu'à 5 profils sur le même appareil. Chacun sa progression, ses badges.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="feature-icon">🏆</span>
+      <h3>Classements Mondiaux</h3>
+      <p>Défi du Jour et Mode Chrono avec leaderboards. Compare-toi au monde entier.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Screenshots -->
+<section class="screenshots">
+  <h2>Découvre Atlas en images</h2>
+  <div class="screenshot-carousel">
+    <div class="screenshot-item">
+      <img src="screenshot-globe.png" alt="Globe 3D interactif Atlas" loading="lazy">
+    </div>
+    <div class="screenshot-item">
+      <img src="screenshot-quiz.png" alt="Quiz drapeaux Atlas" loading="lazy">
+    </div>
+    <div class="screenshot-item">
+      <img src="screenshot-dictee.png" alt="Mode Dictée Atlas" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- Game Modes -->
+<section class="game-modes">
+  <div class="section-header">
+    <h2>7 Façons d'Explorer le Monde</h2>
+    <p>Chaque mode offre une expérience unique pour apprendre en s'amusant</p>
   </div>
 
-  <!-- Privacy EN -->
-  <div class="privacy-card" id="privacy-en">
-    <span class="badge">English</span>
-    <h2>🇬🇧 Privacy Policy</h2>
-    <h3>Data Collection</h3>
-    <p>Atlas does not collect any personal data. All game data (progress, profiles, badges, scores) is stored exclusively on your device via SwiftData and is never transmitted to an external server.</p>
-    <h3>In-App Purchases</h3>
-    <p>Purchases (Expedition packs) are processed exclusively by Apple via StoreKit 2. Atlas has no access to your payment information.</p>
-    <h3>Global Leaderboard</h3>
-    <p>The global leaderboard uses only your profile name and score. No other personal data is transmitted.</p>
-    <h3>Analytics</h3>
-    <p>Atlas uses App Store Connect analytics tools provided by Apple. This data is anonymized and aggregated by Apple. No third-party analytics SDK is integrated.</p>
-    <h3>Children</h3>
-    <p>Atlas is designed for children aged 5 and up. The app does not collect any personal data, offers no social interactions between users, and contains no advertising.</p>
-    <h3>Contact</h3>
-    <p>Questions: <a href="mailto:atlas@hgoalec.dev">atlas@hgoalec.dev</a></p>
+  <div class="modes-list">
+    <div class="mode-item">
+      <span class="mode-emoji">🚩</span>
+      <div class="mode-content">
+        <h3>Quiz Drapeaux</h3>
+        <p>Reconnais les drapeaux du monde. Classique et efficace.</p>
+      </div>
+    </div>
+
+    <div class="mode-item">
+      <span class="mode-emoji">🏛️</span>
+      <div class="mode-content">
+        <h3>Mode Capitales</h3>
+        <p>Mémorise toutes les capitales. De Paris à Oulan-Bator.</p>
+      </div>
+    </div>
+
+    <div class="mode-item">
+      <span class="mode-emoji">⌨️</span>
+      <div class="mode-content">
+        <h3>Mode Expert</h3>
+        <p>Écris le nom des pays toi-même. Pour les pros de la géo.</p>
+      </div>
+    </div>
+
+    <div class="mode-item">
+      <span class="mode-emoji">🔊</span>
+      <div class="mode-content">
+        <h3>Mode Dictée</h3>
+        <p>Joue sans lire, la voix guide tout. Parfait avant 6 ans.</p>
+      </div>
+    </div>
+
+    <div class="mode-item">
+      <span class="mode-emoji">🏆</span>
+      <div class="mode-content">
+        <h3>Défi du Jour</h3>
+        <p>Mêmes questions pour tous. Monte au classement mondial.</p>
+      </div>
+    </div>
+
+    <div class="mode-item">
+      <span class="mode-emoji">⏱️</span>
+      <div class="mode-content">
+        <h3>Mode Chrono</h3>
+        <p>Bats le chrono sur 30, 90 ou 173 pays. Intense et addictif.</p>
+      </div>
+    </div>
+
+    <div class="mode-item">
+      <span class="mode-emoji">🧠</span>
+      <div class="mode-content">
+        <h3>Mode Révision</h3>
+        <p>Répétition espacée intelligente (SM-2). Mémorisation optimale.</p>
+      </div>
+    </div>
   </div>
+</section>
 
-  <!-- Privacy DE -->
-  <div class="privacy-card" id="privacy-de">
-    <span class="badge">Deutsch</span>
-    <h2>🇩🇪 Datenschutzerklärung</h2>
-    <h3>Datenerhebung</h3>
-    <p>Atlas erhebt keinerlei personenbezogene Daten. Alle Spieldaten werden ausschließlich auf Ihrem Gerät gespeichert und niemals an externe Server übertragen.</p>
-    <h3>In-App-Käufe</h3>
-    <p>Käufe werden ausschließlich von Apple über StoreKit 2 abgewickelt. Atlas hat keinen Zugang zu Ihren Zahlungsinformationen.</p>
-    <h3>Weltrangliste</h3>
-    <p>Die Weltrangliste verwendet nur Ihren Profilnamen und Ihre Punktzahl. Keine weiteren personenbezogenen Daten werden übermittelt.</p>
-    <h3>Analysen</h3>
-    <p>Atlas verwendet die von Apple bereitgestellten App Store Connect-Analysetools. In der App ist kein Analyse-SDK von Drittanbietern integriert.</p>
-    <h3>Kinder</h3>
-    <p>Atlas wurde für Kinder ab 5 Jahren entwickelt. Die App erhebt keine personenbezogenen Daten und enthält keine Werbung.</p>
-    <h3>Kontakt</h3>
-    <p>Fragen: <a href="mailto:atlas@hgoalec.dev">atlas@hgoalec.dev</a></p>
+<!-- Languages -->
+<section class="languages">
+  <h2>Disponible en 4 Langues</h2>
+  <p style="font-size: 18px; opacity: 0.9; margin-top: 12px;">
+    Français · English · Deutsch · Español
+  </p>
+  <div class="lang-flags">
+    <span>🇫🇷</span>
+    <span>🇬🇧</span>
+    <span>🇩🇪</span>
+    <span>🇪🇸</span>
   </div>
+</section>
 
-  <!-- Privacy ES -->
-  <div class="privacy-card" id="privacy-es">
-    <span class="badge">Español</span>
-    <h2>🇪🇸 Política de privacidad</h2>
-    <h3>Recopilación de datos</h3>
-    <p>Atlas no recopila ningún dato personal. Todos los datos del juego se almacenan exclusivamente en tu dispositivo y nunca se transmiten a un servidor externo.</p>
-    <h3>Compras integradas</h3>
-    <p>Las compras son procesadas exclusivamente por Apple a través de StoreKit 2. Atlas no tiene acceso a tu información de pago.</p>
-    <h3>Clasificación mundial</h3>
-    <p>La clasificación mundial utiliza únicamente tu nombre de perfil y tu puntuación. No se transmite ningún otro dato personal.</p>
-    <h3>Análisis</h3>
-    <p>Atlas utiliza las herramientas de análisis de App Store Connect de Apple. No hay ningún SDK de análisis de terceros integrado.</p>
-    <h3>Menores</h3>
-    <p>Atlas está diseñado para niños a partir de 5 años. La app no recopila datos personales ni contiene publicidad.</p>
-    <h3>Contacto</h3>
-    <p>Preguntas: <a href="mailto:atlas@hgoalec.dev">atlas@hgoalec.dev</a></p>
+<!-- CTA Final -->
+<section class="cta-final">
+  <h2>Prêt à Explorer le Monde ?</h2>
+  <p>Téléchargement gratuit · 30 pays accessibles sans achat · Packs Expéditions pour débloquer l'intégralité</p>
+  <a href="https://apps.apple.com/app/atlas" class="btn btn-primary" style="font-size: 20px; padding: 18px 40px;">
+    <span>📲</span> Télécharger Atlas
+  </a>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-links">
+    <a href="index.html#support">Support</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="index.html#privacy-fr">Confidentialité</a>
+    <a href="mailto:atlas@hgoalec.dev">Contact</a>
   </div>
+  <p style="font-size: 14px;">
+    © 2026 Hugo Goalec · Atlas — Le Voyage de la Sterne<br>
+    <span style="opacity: 0.6; font-size: 13px;">Guidé par Atlas, la sterne arctique qui parcourt 70 000 km par an</span>
+  </p>
+</footer>
 
-  <footer>
-    <p>Last updated: June 2026 &nbsp;·&nbsp; Atlas Géo &nbsp;·&nbsp; <a href="mailto:atlas@hgoalec.dev">atlas@hgoalec.dev</a></p>
-  </footer>
-
-</main>
 </body>
 </html>

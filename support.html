@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atlas — Le Voyage de la Sterne — Support & Privacy</title>
+  <style>
+    :root { color-scheme: light; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+      background: #f0f4fa;
+      color: #1a2b5f;
+      line-height: 1.7;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #0D1B3E 0%, #1a3a7a 100%);
+      color: white;
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .app-icon {
+      width: 96px; height: 96px;
+      border-radius: 22px;
+      margin: 0 auto 16px;
+      display: block;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    header h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; }
+    header p { margin-top: 6px; opacity: 0.7; font-size: 15px; }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 24px;
+      background: white;
+      border-bottom: 1px solid #e0e8f5;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    nav a {
+      text-decoration: none;
+      color: #1a3a7a;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1.5px solid #c8d4f0;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    nav a:hover { background: #1a3a7a; color: white; border-color: #1a3a7a; }
+
+    /* ── Main ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* ── Support section ── */
+    .support-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      border: 1px solid #e0e8f5;
+    }
+
+    .support-card h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .support-card p {
+      color: #3a4a6b;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      background: #1a3a7a;
+      color: white;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: background 0.2s;
+    }
+    .contact-btn:hover { background: #0d2456; }
+
+    .faq-item {
+      border-top: 1px solid #e8ecf5;
+      padding: 16px 0;
+    }
+    .faq-item:first-child { border-top: none; padding-top: 8px; }
+    .faq-q { font-weight: 700; font-size: 15px; color: #1a2b5f; margin-bottom: 6px; }
+    .faq-a { font-size: 14px; color: #3a4a6b; }
+
+    /* ── Privacy section ── */
+    .privacy-card {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 40px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      border: 1px solid #e0e8f5;
+    }
+
+    .privacy-card h2 {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e8ecf5;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .privacy-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1a3a7a;
+      margin: 18px 0 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .privacy-card p {
+      font-size: 14px;
+      color: #3a4a6b;
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e8f0ff;
+      color: #1a3a7a;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 13px;
+      color: #8a9ab5;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="app-icon.png" alt="Atlas App Icon" class="app-icon">
+  <h1>Atlas — Le Voyage de la Sterne</h1>
+  <p>Geography quiz & 3D interactive globe</p>
+</header>
+
+<nav>
+  <a href="#support">Support</a>
+  <a href="#faq">FAQ</a>
+  <a href="#privacy-fr">🇫🇷 Confidentialité</a>
+  <a href="#privacy-en">🇬🇧 Privacy</a>
+  <a href="#privacy-de">🇩🇪 Datenschutz</a>
+  <a href="#privacy-es">🇪🇸 Privacidad</a>
+</nav>
+
+<main>
+
+  <!-- Support -->
+  <div class="support-card" id="support">
+    <h2>🛟 Support</h2>
+    <p>Une question, un bug, ou une suggestion ? Envoie-nous un email et nous répondrons dans les 48h.</p>
+    <a class="contact-btn" href="mailto:atlas@hgoalec.dev">atlas@hgoalec.dev</a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="support-card" id="faq">
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Comment restaurer mes achats ?</div>
+      <div class="faq-a">Ouvre la Boutique dans l'app → "Restaurer les achats". Tes packs seront récupérés automatiquement avec ton compte Apple.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Mes données sont-elles sauvegardées ?</div>
+      <div class="faq-a">Ta progression est sauvegardée localement sur ton appareil. Elle peut être incluse dans les sauvegardes iCloud si tu les as activées dans les réglages iOS.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">L'app fonctionne-t-elle hors connexion ?</div>
+      <div class="faq-a">Oui, tous les quiz et le globe fonctionnent sans internet. Seul le classement mondial nécessite une connexion.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Comment supprimer un profil ?</div>
+      <div class="faq-a">Sur l'écran de sélection des profils, appuie longuement sur le profil à supprimer, puis confirme la suppression.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I restore my purchases?</div>
+      <div class="faq-a">Open the Shop in the app and tap "Restore Purchases". Your packs will be recovered automatically using your Apple account.</div>
+    </div>
+  </div>
+
+  <!-- Privacy FR -->
+  <div class="privacy-card" id="privacy-fr">
+    <span class="badge">Français</span>
+    <h2>🇫🇷 Politique de confidentialité</h2>
+    <h3>Données collectées</h3>
+    <p>Atlas ne collecte aucune donnée personnelle. Toutes les données de jeu (progression, profils, badges, scores) sont stockées uniquement sur votre appareil via SwiftData et ne sont jamais transmises à un serveur externe.</p>
+    <h3>Achats intégrés</h3>
+    <p>Les achats (packs Expéditions) sont traités exclusivement par Apple via StoreKit 2. Atlas n'a pas accès à vos informations de paiement.</p>
+    <h3>Classement mondial</h3>
+    <p>Le classement mondial utilise uniquement votre nom de profil et votre score. Aucune autre donnée personnelle n'est transmise.</p>
+    <h3>Analyses</h3>
+    <p>Atlas utilise les outils d'analyse d'App Store Connect fournis par Apple. Ces données sont anonymisées et agrégées par Apple. Aucun SDK analytique tiers n'est intégré.</p>
+    <h3>Enfants</h3>
+    <p>Atlas est conçu pour les enfants dès 5 ans. L'application ne collecte aucune donnée personnelle, ne propose aucune interaction sociale, et ne contient aucune publicité.</p>
+    <h3>Contact</h3>
+    <p>Questions : <a href="mailto:atlas@hgoalec.dev">atlas@hgoalec.dev</a></p>
+  </div>
+
+  <!-- Privacy EN -->
+  <div class="privacy-card" id="privacy-en">
+    <span class="badge">English</span>
+    <h2>🇬🇧 Privacy Policy</h2>
+    <h3>Data Collection</h3>
+    <p>Atlas does not collect any personal data. All game data (progress, profiles, badges, scores) is stored exclusively on your device via SwiftData and is never transmitted to an external server.</p>
+    <h3>In-App Purchases</h3>
+    <p>Purchases (Expedition packs) are processed exclusively by Apple via StoreKit 2. Atlas has no access to your payment information.</p>
+    <h3>Global Leaderboard</h3>
+    <p>The global leaderboard uses only your profile name and score. No other personal data is transmitted.</p>
+    <h3>Analytics</h3>
+    <p>Atlas uses App Store Connect analytics tools provided by Apple. This data is anonymized and aggregated by Apple. No third-party analytics SDK is integrated.</p>
+    <h3>Children</h3>
+    <p>Atlas is designed for children aged 5 and up. The app does not collect any personal data, offers no social interactions between users, and contains no advertising.</p>
+    <h3>Contact</h3>
+    <p>Questions: <a href="mailto:atlas@hgoalec.dev">atlas@hgoalec.dev</a></p>
+  </div>
+
+  <!-- Privacy DE -->
+  <div class="privacy-card" id="privacy-de">
+    <span class="badge">Deutsch</span>
+    <h2>🇩🇪 Datenschutzerklärung</h2>
+    <h3>Datenerhebung</h3>
+    <p>Atlas erhebt keinerlei personenbezogene Daten. Alle Spieldaten werden ausschließlich auf Ihrem Gerät gespeichert und niemals an externe Server übertragen.</p>
+    <h3>In-App-Käufe</h3>
+    <p>Käufe werden ausschließlich von Apple über StoreKit 2 abgewickelt. Atlas hat keinen Zugang zu Ihren Zahlungsinformationen.</p>
+    <h3>Weltrangliste</h3>
+    <p>Die Weltrangliste verwendet nur Ihren Profilnamen und Ihre Punktzahl. Keine weiteren personenbezogenen Daten werden übermittelt.</p>
+    <h3>Analysen</h3>
+    <p>Atlas verwendet die von Apple bereitgestellten App Store Connect-Analysetools. In der App ist kein Analyse-SDK von Drittanbietern integriert.</p>
+    <h3>Kinder</h3>
+    <p>Atlas wurde für Kinder ab 5 Jahren entwickelt. Die App erhebt keine personenbezogenen Daten und enthält keine Werbung.</p>
+    <h3>Kontakt</h3>
+    <p>Fragen: <a href="mailto:atlas@hgoalec.dev">atlas@hgoalec.dev</a></p>
+  </div>
+
+  <!-- Privacy ES -->
+  <div class="privacy-card" id="privacy-es">
+    <span class="badge">Español</span>
+    <h2>🇪🇸 Política de privacidad</h2>
+    <h3>Recopilación de datos</h3>
+    <p>Atlas no recopila ningún dato personal. Todos los datos del juego se almacenan exclusivamente en tu dispositivo y nunca se transmiten a un servidor externo.</p>
+    <h3>Compras integradas</h3>
+    <p>Las compras son procesadas exclusivamente por Apple a través de StoreKit 2. Atlas no tiene acceso a tu información de pago.</p>
+    <h3>Clasificación mundial</h3>
+    <p>La clasificación mundial utiliza únicamente tu nombre de perfil y tu puntuación. No se transmite ningún otro dato personal.</p>
+    <h3>Análisis</h3>
+    <p>Atlas utiliza las herramientas de análisis de App Store Connect de Apple. No hay ningún SDK de análisis de terceros integrado.</p>
+    <h3>Menores</h3>
+    <p>Atlas está diseñado para niños a partir de 5 años. La app no recopila datos personales ni contiene publicidad.</p>
+    <h3>Contacto</h3>
+    <p>Preguntas: <a href="mailto:atlas@hgoalec.dev">atlas@hgoalec.dev</a></p>
+  </div>
+
+  <footer>
+    <p>Last updated: June 2026 &nbsp;·&nbsp; Atlas Géo &nbsp;·&nbsp; <a href="mailto:atlas@hgoalec.dev">atlas@hgoalec.dev</a></p>
+  </footer>
+
+</main>
+</body>
+</html>
